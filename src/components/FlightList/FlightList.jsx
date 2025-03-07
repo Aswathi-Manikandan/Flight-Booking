@@ -98,20 +98,26 @@ const FlightList = () => {
                   <img src={flight.logo} alt={flight.airline} className="airline-logo" />
                   <h3 className="airline-name">{flight.airline}</h3>
                   <div className="flight-time">
-                    
-                    {flight.departure}
-                    <FaMapMarkerAlt className="icon-location" />
-                    <span className="time-separator">---------------------------------------</span>
-                    <FaPlane className="icon-plane" />
-                    {flight.arrival}
-                   
-                  </div>
+  <div className="flight-details">
+    <div className="flight-column">
+    <p className="time">{flight.departure}</p>
+      <p className="location">{flight.from}</p>
+     
+    </div>
+    <FaMapMarkerAlt className="icon-location" />
+    <span className="time-separator">---------------------------------------</span>
+    <FaPlane className="icon-plane" />
+    <div className="flight-column">
+    <p className="time">{flight.arrival}</p>
+      <p className="location">{flight.to}</p>
+      
+    </div>
+  </div>
+</div>
+
                 </div>
 
-                {/* From and To Locations */}
-                <p className="route">
-                  {flight.from} ➝ {flight.to}
-                </p>
+                
               </div>
 
               <div className="card-body">
