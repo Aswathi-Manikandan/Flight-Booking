@@ -1,7 +1,7 @@
 const flights = [
     {
       airline: "Etihad Airways",
-      logo: "/assets/etihad.png",
+      logo: "src/assets/etihad.png",
       from: "COK",
       to: "DXB",
       price: 130,
@@ -11,7 +11,7 @@ const flights = [
     },
     {
       airline: "Qatar Airways",
-      logo: "/assets/qatar.png",
+      logo: "src/assets/qatar.png",
       from: "DOH",
       to: "LHR",
       price: 200,
@@ -21,7 +21,7 @@ const flights = [
     },
     {
       airline: "Emirates",
-      logo: "/assets/emirates.png",
+      logo: "src/assets/emirates.png",
       from: "DXB",
       to: "JFK",
       price: 450,
@@ -31,7 +31,7 @@ const flights = [
     },
     {
       airline: "Turkish Airlines",
-      logo: "/assets/turkish.png",
+      logo: "src/assets/turkish.png",
       from: "IST",
       to: "CDG",
       price: 220,
@@ -41,7 +41,7 @@ const flights = [
     },
     {
       airline: "Singapore Airlines",
-      logo: "/assets/singapore.png",
+      logo: "src/assets/singapore.png",
       from: "SIN",
       to: "LAX",
       price: 500,
@@ -51,7 +51,7 @@ const flights = [
     },
     {
       airline: "Lufthansa",
-      logo: "/assets/lufthansa.png",
+      logo: "src/assets/lufthansa.png",
       from: "FRA",
       to: "ORD",
       price: 390,
@@ -61,7 +61,7 @@ const flights = [
     },
     {
       airline: "British Airways",
-      logo: "/assets/british.png",
+      logo: "src/assets/british.png",
       from: "LHR",
       to: "DXB",
       price: 350,
@@ -71,7 +71,7 @@ const flights = [
     },
     {
       airline: "Air France",
-      logo: "/assets/airfrance.png",
+      logo: "src/assets/airfrance.png",
       from: "CDG",
       to: "JFK",
       price: 410,
