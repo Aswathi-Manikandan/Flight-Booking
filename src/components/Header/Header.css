@@ -1,0 +1,86 @@
+/* Header Styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: linear-gradient(to right, #068fdf, #02b830); /* Blue to Green Gradient */
+    color: white;
+  }
+  
+  
+  .logo h2 {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  
+  
+  .nav-links {
+    display: flex;
+    gap: 25px;
+    margin-left: auto; 
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+  }
+  
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+  
+  
+  .currency-selector {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    margin-left: 20px;
+  }
+  
+  .currency-selector .flag {
+    width: 18px;  /* Reduced size */
+    height: 12px; /* Reduced size */
+    border-radius: 3px;
+  }
+  
+  .currency-selector .currency {
+    font-size: 14px;
+  }
+  
+  .currency-selector .arrow {
+    font-size: 12px;
+  }
+  
+  /* Dropdown */
+  .dropdown {
+    position: absolute;
+    top: 35px;
+    right: 0;
+    background: white;
+    color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    list-style: none;
+    padding: 10px;
+    min-width: 100px;
+    z-index: 10;
+  }
+  
+  .dropdown li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .dropdown li:hover {
+    background: #f0f0f0;
+  }
+  
