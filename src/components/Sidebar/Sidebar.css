@@ -6,15 +6,3 @@
     height: 100%;
     background: linear-gradient(to top, #068fdf, #02b830);
 }
-
-.sidebar::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: -25px; 
-    width: 50px; 
-    height: 80px; 
-    background: linear-gradient(to top, #068fdf, #02b830);
-    border-radius: 0 50px 50px 0; 
-    transform: translateY(-50%);
-}
