@@ -158,9 +158,10 @@ const FlightList = () => {
                 </div>
 
                 </div>
-
                 </div>
-                
+                <div className="price-section">
+                  <p className="price">Price: ${flight.price}</p>
+                </div>
               </div>
 
             

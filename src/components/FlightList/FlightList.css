@@ -4,15 +4,17 @@
     text-align: center;
 }
 
+/* Controls */
 .controls {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 15px;
     margin-bottom: 20px;
-    
 }
 
+
+/* Sort Dropdown */
 .sort-dropdown {
     padding: 12px;
     font-size: 16px;
@@ -25,6 +27,7 @@
     transition: background 0.3s ease;
 }
 
+/* Filter Buttons */
 .filter-buttons {
     display: flex;
     gap: 10px;
@@ -45,12 +48,14 @@
     transition: background 0.3s ease;
 }
 
+/* Flight List */
 .flight-list {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
+/* Flight Card */
 .flight-card {
     width: 100%;
     max-width: 600px;
@@ -62,6 +67,7 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Flight Info */
 .flight-info {
     margin-bottom: 10px;
 }
@@ -76,29 +82,23 @@
     margin-top: 10px;
 }
 
-.departure-text {
+.departure-text, .departure-text1 {
     color: blue;
     font-size: 16px;
+    font-weight: bold;
+}
+
+.departure-date, .departure-date1 {
+    color: rgb(77, 121, 187);
+    font-size: 14px;
     font-weight: bold;
 }
 
 .departure-text1 {
-    color: blue;
-    font-size: 16px;
-    font-weight: bold;
     margin-top: 30px;
 }
 
-.departure-date {
-    color: rgb(77, 121, 187);
-    font-size: 14px;
-    font-weight: bold;
-}
-
 .departure-date1 {
-    color: rgb(77, 121, 187);
-    font-size: 14px;
-    font-weight: bold;
     margin-top: 30px;
 }
 
@@ -131,25 +131,20 @@
     gap: 8px;
 }
 
-.icon-location {
+.icon-location, .icon-plane, .time-separator {
     color: blue;
 }
 
-.icon-plane {
-    color: blue;
-}
-
-.time-separator{
-    color: blue;
-}
 /* Price */
 .price {
-    font-weight: bold;
-    color: #007bff;
+    
+    color: black;
     font-size: 18px;
     margin-top: 10px;
+    
 }
 
+/* Flight Details */
 .flight-details {
     display: flex;
     align-items: center;
@@ -157,6 +152,7 @@
     justify-content: center;
 }
 
+/* Flight Column */
 .flight-column {
     display: flex;
     flex-direction: column;
@@ -179,10 +175,12 @@
 
 .time {
     font-size: 15px;
-    color:black;
+    color: black;
     margin-top: 10px;
     margin-left: 10px;
 }
+
+/* Separator Container */
 .separator-container {
     display: flex;
     flex-direction: column;
@@ -200,4 +198,103 @@
     transform: translateY(-50%);
     background-color: white;
     padding: 0 5px;
+}
+
+/* ===================== RESPONSIVE DESIGN ===================== */
+
+/* Tablets (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+    .flight-container {
+        width: 95%;
+    }
+}
+
+/* Small Screens (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    .flight-container {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .controls {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .filter-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .flight-card {
+        width: 95%;
+        max-width: 100%;
+    }
+
+    .departure-row {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .airline-row {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .flight-details {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .sort-dropdown {
+        width: 100%;
+    }
+
+    
+}
+
+/* Mobile Devices (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    .flight-container {
+        width: 100%;
+        padding: 0 5px;
+    }
+
+    .flight-card {
+        width: 100%;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .sort-dropdown {
+        width: 100%;
+        text-align: center;
+    }
+
+    .filter-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .filter-buttons button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .departure-row,
+    .airline-row,
+    .flight-details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .separator-container {
+        margin-top: 10px;
+    }
 }
