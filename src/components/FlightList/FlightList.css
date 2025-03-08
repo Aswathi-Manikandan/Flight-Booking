@@ -67,12 +67,12 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Flight Info */
+
 .flight-info {
     margin-bottom: 10px;
 }
 
-/* Departure and Date */
+
 .departure-row {
     display: flex;
     align-items: center;
@@ -102,7 +102,7 @@
     margin-top: 30px;
 }
 
-/* Airline Row */
+
 .airline-row {
     display: flex;
     align-items: center;
@@ -122,7 +122,7 @@
     color: rgb(100, 96, 96);
 }
 
-/* Flight Time with Icons */
+
 .flight-time {
     font-size: 16px;
     font-weight: bold;
@@ -135,7 +135,7 @@
     color: blue;
 }
 
-/* Price */
+
 .price {
     
     color: black;
@@ -144,7 +144,7 @@
     
 }
 
-/* Flight Details */
+
 .flight-details {
     display: flex;
     align-items: center;
@@ -152,7 +152,7 @@
     justify-content: center;
 }
 
-/* Flight Column */
+
 .flight-column {
     display: flex;
     flex-direction: column;
@@ -180,7 +180,7 @@
     margin-left: 10px;
 }
 
-/* Separator Container */
+
 .separator-container {
     display: flex;
     flex-direction: column;
@@ -200,16 +200,16 @@
     padding: 0 5px;
 }
 
-/* ===================== RESPONSIVE DESIGN ===================== */
 
-/* Tablets (max-width: 1024px) */
+
+
 @media screen and (max-width: 1024px) {
     .flight-container {
         width: 95%;
     }
 }
 
-/* Small Screens (max-width: 768px) */
+
 @media screen and (max-width: 768px) {
     .flight-container {
         width: 100%;
@@ -256,7 +256,7 @@
     
 }
 
-/* Mobile Devices (max-width: 480px) */
+
 @media screen and (max-width: 480px) {
     .flight-container {
         width: 100%;
