@@ -1,86 +1,195 @@
 /* Header Styling */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 97%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: linear-gradient(to right, #068fdf, #02b830);
+  color: white;
+  z-index: 1000;
+}
+
+/* Add margin to prevent content from hiding behind the header */
+body {
+  padding-top: 70px;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo h2 {
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+}
+
+/* Navigation Links - Hidden by Default on Mobile */
+.nav-links {
+  display: flex;
+  gap: 25px;
+  margin-left: auto;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Hamburger Menu */
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  width: 30px;
+  height: 25px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-icon span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+/* Open/Close Animation */
+.menu-icon.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-icon.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Currency Selector */
+.currency-selector {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.currency-selector .flag {
+  width: 18px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.currency-selector .currency {
+  font-size: 14px;
+}
+
+.currency-selector .arrow {
+  font-size: 12px;
+}
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background: white;
+  color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  list-style: none;
+  padding: 10px;
+  min-width: 100px;
+  z-index: 10;
+}
+
+.dropdown li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dropdown li:hover {
+  background: #f0f0f0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  /* Show Menu Icon */
+  .menu-icon {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    background: linear-gradient(to right, #068fdf, #02b830); /* Blue to Green Gradient */
-    color: white;
   }
-  
-  
-  .logo h2 {
-    font-size: 22px;
-    font-weight: bold;
-  }
-  
-  
+
+  /* Hide nav links by default */
   .nav-links {
+    position: absolute;
+    top: 60px;
+    right: -100%;  /* Initially hidden */
+    width: 200px;  /* Compact width */
+    flex-direction: column;
+    align-items: flex-start;
+    background: linear-gradient(to right, #068fdf, #02b830);
     display: flex;
-    gap: 25px;
-    margin-left: auto; 
+    border-radius: 5px;
+    padding: 10px 0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease-in-out;
   }
-  
+
+  /* Show when active */
+  .nav-links.active {
+    right: 10px; /* Slide in from right */
+  }
+
+  /* Each link appears line by line */
   .nav-links a {
-    color: white;
-    text-decoration: none;
     font-size: 16px;
-    transition: 0.3s;
+    padding: 10px 15px;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
-  
-  .nav-links a:hover {
-    text-decoration: underline;
+
+  .nav-links a:last-child {
+    border-bottom: none;
   }
-  
-  
+
   .currency-selector {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    margin-left: 20px;
+    align-self: center;
+    margin-top: 10px;
   }
-  
-  .currency-selector .flag {
-    width: 18px;  /* Reduced size */
-    height: 12px; /* Reduced size */
-    border-radius: 3px;
+}
+
+@media (max-width: 480px) {
+  .logo h2 {
+    font-size: 18px;
   }
-  
-  .currency-selector .currency {
+
+  .nav-links a {
     font-size: 14px;
+    padding: 12px;
   }
-  
-  .currency-selector .arrow {
+
+  .currency-selector {
     font-size: 12px;
   }
-  
-  /* Dropdown */
-  .dropdown {
-    position: absolute;
-    top: 35px;
-    right: 0;
-    background: white;
-    color: black;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    list-style: none;
-    padding: 10px;
-    min-width: 100px;
-    z-index: 10;
-  }
-  
-  .dropdown li {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  .dropdown li:hover {
-    background: #f0f0f0;
-  }
-  
+}

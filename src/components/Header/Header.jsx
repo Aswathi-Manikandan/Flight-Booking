@@ -7,6 +7,7 @@ import usaFlag from "../../assets/usa.png";
 
 const Header = () => {
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState({
     name: "KWD",
     flag: kuwaitFlag,
@@ -25,11 +26,20 @@ const Header = () => {
 
   return (
     <header className="header">
+      {/* Logo Section */}
       <div className="logo">
-        <h2>LOGO</h2> 
+        <h2>ALMUSAFEER</h2> 
       </div>
 
-      <nav className="nav-links">
+      {/* Hamburger Menu */}
+      <div className="menu-icon" onClick={() => setShowMenu(!showMenu)}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      {/* Navigation Links - Appears on Right Side */}
+      <nav className={`nav-links ${showMenu ? "active" : ""}`}>
         <a href="#">Home</a>
         <a href="#">My Booking</a>
         <a href="#">Register</a>
@@ -37,6 +47,7 @@ const Header = () => {
         <a href="#">Contact</a>
       </nav>
 
+      {/* Currency Selector */}
       <div className="currency-selector" onClick={() => setShowDropdown(!showDropdown)}>
         <img src={selectedCountry.flag} alt={selectedCountry.name} className="flag" />
         <span className="currency">{selectedCountry.name}</span>
