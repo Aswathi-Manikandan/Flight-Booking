@@ -1,29 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import flights from "../../data/flights";
 import "../FlightList/FlightList.css";
-import { FaMapMarkerAlt, FaPlane, FaThumbsUp } from "react-icons/fa"; // Import icons
+import { FaMapMarkerAlt, FaPlane, FaThumbsUp } from "react-icons/fa";
 
 const FlightList = () => {
   const [sortBy, setSortBy] = useState("price-low");
   const [filterBy, setFilterBy] = useState(null);
   const [filteredFlights, setFilteredFlights] = useState([]);
 
+  // Memoized sorting function to prevent unnecessary re-renders
+  const applySorting = useCallback(
+    (flightsToSort) => {
+      if (sortBy === "all") return flightsToSort;
+      return [...flightsToSort].sort((a, b) => {
+        if (sortBy === "price-low") return a.price - b.price;
+        if (sortBy === "price-high") return b.price - a.price;
+        if (sortBy === "departure-earliest") return a.departure.localeCompare(b.departure);
+        if (sortBy === "departure-latest") return b.departure.localeCompare(a.departure);
+        if (sortBy === "duration-shortest") return parseFloat(a.duration) - parseFloat(b.duration);
+        if (sortBy === "duration-longest") return parseFloat(b.duration) - parseFloat(a.duration);
+        return 0;
+      });
+    },
+    [sortBy]
+  );
+
   useEffect(() => {
     setFilteredFlights(applySorting(flights));
-  }, []);
-
-  const applySorting = (flightsToSort) => {
-    if (sortBy === "all") return flightsToSort;
-    return [...flightsToSort].sort((a, b) => {
-      if (sortBy === "price-low") return a.price - b.price;
-      if (sortBy === "price-high") return b.price - a.price;
-      if (sortBy === "departure-earliest") return a.departure.localeCompare(b.departure);
-      if (sortBy === "departure-latest") return b.departure.localeCompare(a.departure);
-      if (sortBy === "duration-shortest") return parseFloat(a.duration) - parseFloat(b.duration);
-      if (sortBy === "duration-longest") return parseFloat(b.duration) - parseFloat(a.duration);
-      return 0;
-    });
-  };
+  }, [applySorting]);
 
   const handleFilter = (type) => {
     if (filterBy === type) {
@@ -47,11 +51,7 @@ const FlightList = () => {
     const selectedSort = e.target.value;
     setSortBy(selectedSort);
     setFilterBy(null);
-    if (selectedSort === "all") {
-      setFilteredFlights(flights);
-    } else {
-      setFilteredFlights(applySorting(flights));
-    }
+    setFilteredFlights(applySorting(flights));
   };
 
   return (
