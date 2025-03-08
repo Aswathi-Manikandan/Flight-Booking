@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import flights from "../../data/flights";
 import "../FlightList/FlightList.css";
-import { FaMapMarkerAlt, FaPlane } from "react-icons/fa"; // Import icons
+import { FaMapMarkerAlt, FaPlane, FaThumbsUp } from "react-icons/fa"; // Import icons
 
 const FlightList = () => {
   const [sortBy, setSortBy] = useState("price-low");
@@ -19,8 +19,8 @@ const FlightList = () => {
       if (sortBy === "price-high") return b.price - a.price;
       if (sortBy === "departure-earliest") return a.departure.localeCompare(b.departure);
       if (sortBy === "departure-latest") return b.departure.localeCompare(a.departure);
-      if (sortBy === "duration-shortest") return a.duration.localeCompare(b.duration);
-      if (sortBy === "duration-longest") return b.duration.localeCompare(a.duration);
+      if (sortBy === "duration-shortest") return parseFloat(a.duration) - parseFloat(b.duration);
+      if (sortBy === "duration-longest") return parseFloat(b.duration) - parseFloat(a.duration);
       return 0;
     });
   };
@@ -35,10 +35,10 @@ const FlightList = () => {
         const cheapestFlight = flights.reduce((prev, curr) => (prev.price < curr.price ? prev : curr));
         setFilteredFlights([cheapestFlight]);
       } else if (type === "fastest") {
-        const fastestFlight = flights.reduce((prev, curr) => (prev.duration < curr.duration ? prev : curr));
+        const fastestFlight = flights.reduce((prev, curr) => (parseFloat(prev.duration) < parseFloat(curr.duration) ? prev : curr));
         setFilteredFlights([fastestFlight]);
       } else if (type === "bestvalue") {
-        setFilteredFlights(flights.filter((flight) => flight.price <= 500 && flight.duration <= "3h"));
+        setFilteredFlights(flights.filter((flight) => flight.price <= 500 && parseFloat(flight.duration) <= 3));
       }
     }
   };
@@ -61,7 +61,7 @@ const FlightList = () => {
       <div className="controls">
         <select className="sort-dropdown" value={sortBy} onChange={handleSortChange}>
           <option value="all">Sort: All</option>
-          <option value="price-low">Sort: Price </option>
+          <option value="price-low">Sort: Price (Low to High)</option>
           <option value="price-high">Sort: Price (High to Low)</option>
           <option value="departure-earliest">Sort: Departure (Earliest First)</option>
           <option value="departure-latest">Sort: Departure (Latest First)</option>
@@ -71,13 +71,13 @@ const FlightList = () => {
 
         <div className="filter-buttons">
           <button className={filterBy === "cheapest" ? "active" : ""} onClick={() => handleFilter("cheapest")}>
-            Cheapest
+            <FaPlane /> Cheapest
           </button>
           <button className={filterBy === "fastest" ? "active" : ""} onClick={() => handleFilter("fastest")}>
-            Fastest
+            <FaPlane /> Fastest
           </button>
           <button className={filterBy === "bestvalue" ? "active" : ""} onClick={() => handleFilter("bestvalue")}>
-            Best Value
+            <FaThumbsUp /> Best Value
           </button>
         </div>
       </div>
@@ -87,84 +87,74 @@ const FlightList = () => {
           filteredFlights.map((flight, index) => (
             <div key={index} className="flight-card">
               <div className="flight-info">
-                {/* Departure and Date in One Line */}
                 <div className="departure-row">
                   <p className="departure-text">Departure</p>
-                  <p className="departure-date">on{flight.departureDate}</p>
+                  <p className="departure-date">on {flight.departureDate}</p>
                 </div>
 
-                {/* Airline Logo, Name, and Flight Timing */}
                 <div className="airline-row">
                   <img src={flight.logo} alt={flight.airline} className="airline-logo" />
                   <h3 className="airline-name">{flight.airline}</h3>
                   <div className="flight-time">
-                  <div className="flight-time">
-                <div className="flight-details">
-                    <div className="flight-column">
-                    <p className="time">{flight.departure}</p>
-                    <p className="location">{flight.from}</p>
+                    <div className="flight-details">
+                      <div className="flight-column">
+                        <p className="time">{flight.departure}</p>
+                        <p className="location">{flight.from}</p>
+                      </div>
+
+                      <FaMapMarkerAlt className="icon-location" />
+
+                      <div className="separator-container">
+                        <span className="time-separator">---------------------------------</span>
+                        <p className="duration">{flight.duration}h</p>
+                      </div>
+
+                      <FaPlane className="icon-plane" />
+
+                      <div className="flight-column">
+                        <p className="time">{flight.arrival}</p>
+                        <p className="location">{flight.to}</p>
+                      </div>
                     </div>
-
-                    <FaMapMarkerAlt className="icon-location" />
-
-                    <div className="separator-container">
-                    <span className="time-separator">---------------------------------------</span>
-                    <p className="duration">{flight.duration}</p> {/* Centered duration */}
-                    </div>
-
-                    <FaPlane className="icon-plane" />
-
-                    <div className="flight-column">
-                    <p className="time">{flight.arrival}</p>
-                    <p className="location">{flight.to}</p>
-                    </div>
-                </div>
+                  </div>
                 </div>
 
-                </div>
-
-                </div>
                 <div className="departure-row">
                   <p className="departure-text1">RETURN</p>
                   <p className="departure-date1">{flight.departureDate}</p>
                 </div>
 
-                {/* Airline Logo, Name, and Flight Timing */}
                 <div className="airline-row">
                   <img src={flight.logo} alt={flight.airline} className="airline-logo" />
                   <h3 className="airline-name">{flight.airline}</h3>
                   <div className="flight-time">
-                  <div className="flight-time">
-                <div className="flight-details">
-                    <div className="flight-column">
-                    <p className="time">{flight.departure}</p>
-                    <p className="location">{flight.from}</p>
+                    <div className="flight-details">
+                      <div className="flight-column">
+                        <p className="time">{flight.departure}</p>
+                        <p className="location">{flight.from}</p>
+                      </div>
+
+                      <FaMapMarkerAlt className="icon-location" />
+
+                      <div className="separator-container">
+                        <span className="time-separator">---------------------------------</span>
+                        <p className="duration">{flight.duration}h</p>
+                      </div>
+
+                      <FaPlane className="icon-plane" />
+
+                      <div className="flight-column">
+                        <p className="time">{flight.arrival}</p>
+                        <p className="location">{flight.to}</p>
+                      </div>
                     </div>
-
-                    <FaMapMarkerAlt className="icon-location" />
-
-                    <div className="separator-container">
-                    <span className="time-separator">---------------------------------------</span>
-                    <p className="duration">{flight.duration}</p> {/* Centered duration */}
-                    </div>
-
-                    <FaPlane className="icon-plane" />
-
-                    <div className="flight-column">
-                    <p className="time">{flight.arrival}</p>
-                    <p className="location">{flight.to}</p>
-                    </div>
-                </div>
+                  </div>
                 </div>
 
-                </div>
-                </div>
                 <div className="price-section">
                   <p className="price">Price: ${flight.price}</p>
                 </div>
               </div>
-
-            
             </div>
           ))
         ) : (
